@@ -2,7 +2,9 @@
   "name": "kuwacoin-vendor",
   "packageManager": "yarn@3.2.1",
   "scripts": {
-    "dev": "yarn workspace @kuwacoin-vendor/vite dev"
+    "dev": "yarn workspace @kuwacoin-vendor/vite dev",
+    "chain": "yarn workspace @kuwacoin-vendor/hardhat chain",
+    "deploy": "yarn workspace @kuwacoin-vendor/hardhat deploy"
   },
   "workspaces": [
     "packages/*"
