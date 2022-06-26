@@ -1,4 +1,10 @@
 {
-  "name": "KuwaCoin-Vendor",
-  "packageManager": "yarn@3.2.1"
+  "name": "kuwacoin-vendor",
+  "packageManager": "yarn@3.2.1",
+  "scripts": {
+    "dev": "yarn workspace @kuwacoin-vendor/vite dev"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
