@@ -1,0 +1,70 @@
+const INFURA_ID = import.meta.env.VITE_INFURA_ID
+
+export const NETWORKS = {
+  localhost: {
+    name: 'localhost',
+    color: '#666666',
+    chainId: 31337,
+    blockExplorer: '',
+    url: 'http://localhost:8545',
+  },
+  mainnet: {
+    name: 'mainnet',
+    color: '#ff8b9e',
+    chainId: 1,
+    url: `https://mainnet.infura.io/v3/${INFURA_ID}`,
+    blockExplorer: 'https://etherscan.io/',
+  },
+  kovan: {
+    name: 'kovan',
+    color: '#7003DD',
+    chainId: 42,
+    url: `https://kovan.infura.io/v3/${INFURA_ID}`,
+    blockExplorer: 'https://kovan.etherscan.io/',
+    faucet: 'https://gitter.im/kovan-testnet/faucet', // https://faucet.kovan.network/
+  },
+  rinkeby: {
+    name: 'rinkeby',
+    color: '#e0d068',
+    chainId: 4,
+    url: `https://rinkeby.infura.io/v3/${INFURA_ID}`,
+    faucet: 'https://faucet.rinkeby.io/',
+    blockExplorer: 'https://rinkeby.etherscan.io/',
+  },
+  ropsten: {
+    name: 'ropsten',
+    color: '#F60D09',
+    chainId: 3,
+    faucet: 'https://faucet.ropsten.be/',
+    blockExplorer: 'https://ropsten.etherscan.io/',
+    url: `https://ropsten.infura.io/v3/${INFURA_ID}`,
+  },
+  goerli: {
+    name: 'goerli',
+    color: '#0975F6',
+    chainId: 5,
+    faucet: 'https://goerli-faucet.slock.it/',
+    blockExplorer: 'https://goerli.etherscan.io/',
+    url: `https://goerli.infura.io/v3/${INFURA_ID}`,
+  },
+  polygon: {
+    name: 'polygon',
+    color: '#2bbdf7',
+    chainId: 137,
+    price: 1,
+    gasPrice: 3500000000,
+    url: 'https://matic-mainnet.chainstacklabs.com',
+    faucet: 'https://faucet.matic.network',
+    blockExplorer: 'https://polygonscan.com',
+  },
+  mumbai: {
+    name: 'mumbai',
+    color: '#92D9FA',
+    chainId: 80001,
+    price: 1,
+    gasPrice: 2000000000,
+    url: 'https://matic-mumbai.chainstacklabs.com',
+    faucet: 'https://faucet.matic.network',
+    blockExplorer: 'https://mumbai.polygonscan.com/',
+  },
+} as const

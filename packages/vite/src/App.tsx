@@ -1,5 +1,6 @@
 import { Box, Button, HStack, useColorMode } from '@chakra-ui/react'
 import { useEthersAppContext } from 'eth-hooks/context'
+import { useEffect, useRef } from 'react'
 import { useCreateLoginConnector } from './hooks'
 
 function App() {
@@ -17,6 +18,25 @@ function App() {
       ethersAppContext.disconnectModal()
     }
   }
+
+  const isMounted = useRef(false)
+
+  useEffect(() => {
+    if (!ethersAppContext.active && !isMounted.current) {
+      let connector = createLoginConnector()
+      connector.loadWeb3Modal()
+      if (!connector.hasCachedProvider()) {
+        connector = createLoginConnector('custom-localhost')
+      }
+      ethersAppContext.activate(connector)
+    }
+  }, [createLoginConnector])
+
+  useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true
+    }
+  }, [])
 
   return (
     <>
