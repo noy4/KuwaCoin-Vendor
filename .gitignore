@@ -11,4 +11,5 @@
 #.pnp.*
 
 node_modules
-packages/hardhat/generated
+*.local.ts
+generated
