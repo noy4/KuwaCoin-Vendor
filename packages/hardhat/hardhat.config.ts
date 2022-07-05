@@ -28,6 +28,7 @@ const config: HardhatUserConfig = {
   namedAccounts: {
     deployer: 0,
   },
+  defaultNetwork: 'localhost',
   networks: {
     ropsten: {
       url: process.env.ROPSTEN_URL || '',
