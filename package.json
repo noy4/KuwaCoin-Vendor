@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "yarn workspace @kuwacoin-vendor/vite dev",
     "chain": "yarn workspace @kuwacoin-vendor/hardhat chain",
-    "deploy": "yarn workspace @kuwacoin-vendor/hardhat deploy"
+    "deploy": "yarn workspace @kuwacoin-vendor/hardhat deploy",
+    "clean": "yarn workspace @kuwacoin-vendor/hardhat clean"
   },
   "workspaces": [
     "packages/*"
