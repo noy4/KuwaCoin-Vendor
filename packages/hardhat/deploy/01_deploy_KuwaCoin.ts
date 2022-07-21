@@ -6,12 +6,12 @@ const func: DeployFunction = async (hre) => {
   const { deployer } = await getNamedAccounts()
   await deploy('KuwaCoin', {
     from: deployer,
-    args: [ethers.utils.parseEther('2000')],
+    args: [ethers.utils.parseEther('100000')],
     log: true,
   })
   const yourToken = await ethers.getContract('KuwaCoin', deployer)
   const balance = await yourToken.balanceOf(deployer)
-  console.log('blance:', ethers.utils.formatEther(balance))
+  console.log('balance:', ethers.utils.formatEther(balance))
 }
 export default func
-func.tags = ['Greeter']
+func.tags = ['KuwaCoin']

@@ -6,19 +6,24 @@ import './KuwaCoin.sol';
 
 contract Vendor is Ownable {
   KuwaCoin public kuwaCoin;
-  uint256 public constant TOKEN_RATE = 200_000;
+  uint256 public constant TOKEN_RATE = 100_000;
 
   constructor(address tokenAddress) {
     kuwaCoin = KuwaCoin(tokenAddress);
   }
 
-  event BuyTokens(address buyer, uint256 ethAmount, uint256 tokenAmount);
+  event Transfer(
+    address indexed who,
+    string side,
+    uint256 ethAmount,
+    uint256 tokenAmount
+  );
 
   function buyTokens() public payable returns (uint256 tokenAmount) {
     tokenAmount = msg.value * TOKEN_RATE;
     bool sent = kuwaCoin.transfer(msg.sender, tokenAmount);
     require(sent, 'Failed to buy');
-    emit BuyTokens(msg.sender, msg.value, tokenAmount);
+    emit Transfer(msg.sender, 'buy', msg.value, tokenAmount);
   }
 
   function sellTokens(uint256 tokenAmount) public returns (uint256 ethAmount) {
@@ -26,6 +31,7 @@ contract Vendor is Ownable {
     ethAmount = tokenAmount / TOKEN_RATE;
     (bool sent, ) = msg.sender.call{value: ethAmount}('');
     require(sent, 'Failed to sell');
+    emit Transfer(msg.sender, 'sell', ethAmount, tokenAmount);
   }
 
   function withdraw() public onlyOwner returns (bool) {
@@ -33,4 +39,6 @@ contract Vendor is Ownable {
     require(sent, 'Failed to withdraw');
     return sent;
   }
+
+  receive() external payable {}
 }
